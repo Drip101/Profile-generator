@@ -4,6 +4,7 @@ const Manager = require('./lib/Manager')
 const Intern = require('./lib/Intern')
 const page = require('./src/page')
 const fs = require('fs')
+const Engineer = require('./lib/Engineer')
 const team = []
 function start() {
     inquirer.prompt([
@@ -63,6 +64,36 @@ function internStart() {
     ]).then(data => {
         const intern = new Intern(data.internName, data.internId, data.internEmail, data.internSchool)
         team.push(intern)
+        console.log(team)
+        engineerStart()
+    })
+}
+
+function engineerStart() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the engineer`s name?',
+            name: 'EngineerName',
+        },
+        {
+            type: 'input',
+            message: 'What is their id',
+            name: 'EngineerId'
+        },
+        {
+            type: 'input',
+            message: 'What is their email',
+            name: 'EngineerEmail'
+        },
+        {
+            type: 'input',
+            message: 'What is their github',
+            name: 'EngineerSchool'
+        },
+    ]) .then(data => {
+        const engineer = new Engineer(data.EngineerName, data.EngineerId, data.EngineerEmail, data.EngineerSchool)
+        team.push(engineer)
         console.log(team)
         fs.writeFileSync('./dist/index.html', page(team), 'utf-8')
     })
