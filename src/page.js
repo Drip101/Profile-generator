@@ -1,8 +1,8 @@
 const Engineer = require("../lib/Engineer")
 
 function generate(team) {
-    function generateManager(manager) {
-        return `
+  function generateManager(manager) {
+    return `
         <div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${manager.getName()}</h5>
@@ -14,9 +14,9 @@ function generate(team) {
         `
 
 
-    }
-    function generateIntern(intern) {
-        return `<div class="card" style="width: 18rem;">
+  }
+  function generateIntern(intern) {
+    return `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${intern.getName()}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${intern.getId()}</h6>
@@ -26,26 +26,26 @@ function generate(team) {
       </div>
 
 `
-    }
-    function generateEngineer(engineer) {
-        return `<div class="card" style="width: 18rem;">
+  }
+  function generateEngineer(engineer) {
+    return `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h5 class="card-title">${engineer.getName()}</h5>
           <h6 class="card-subtitle mb-2 text-muted">${engineer.getId()}}</h6>
-          <a href="#" class="card-link">${intern.getEmail()}</a>
-          <a href="#" class="card-link">${intern.getGithub()}</a>
+          <a href="#" class="card-link">${engineer.getEmail()}</a>
+          <a href="#" class="card-link">${engineer.getGithub()}</a>
         </div>
       </div>
         `
 
-    }
+  }
 
-    return [generateManager(team[0]), generateEngineer(team[2]), generateIntern(team[1])].join('')
+  return [generateManager(team[0]), generateEngineer(team[2]), generateIntern(team[1])].join('')
 }
 
 
 module.exports = (team) => {
-    return `
+  return `
     <!DOCTYPE html>
 <html lang="en">
 <head>
